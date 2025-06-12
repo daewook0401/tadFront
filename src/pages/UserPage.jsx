@@ -3,17 +3,19 @@ import useApi from '../hooks/useApi';
 
 const UserPage = () => {
   
-  const { data: users, totalCount, loading, error } = useApi('/api/test/users', { params: { param: 'test' }});
+  const { header, body, error, loading } = useApi('/api/test/users', { method:'post'});
   
   if (loading) return <p>불러오는 중...</p>;
-  if (error) return <p style={{ color: 'red' }}>오류: {error}</p>;
+  if (error) return <p style={{ color: 'red' }}>
+    코드: {header.code},
+    오류: {header.message}</p>;
 
   return (
     <div>
       <h2>사용자 목록</h2>
-      <p>총 {totalCount}명</p>
+      <p>총 {body.totalCount}명</p>
       <ul>
-        {users.map(user => (
+        {body.items.map(user => (
           <li key={user.userId}>
             {user.userName} ({user.email})
           </li>

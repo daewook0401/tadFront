@@ -7,6 +7,7 @@ import { AuthProvider } from './provider/AuthContext'
 import { Route, Routes } from 'react-router-dom'
 import MainPage from './components/MainPage/MainPage'
 import UserPage from './pages/UserPage'
+import Cookie from './components/cookie/Cookie'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -16,6 +17,7 @@ function App() {
         <Route element={<CommonLayout/>}>
           <Route path="/" element={<MainPage />} />
           <Route path="/user-page" element={<UserPage/>}/>
+          <Route path="/cookie" element={<Cookie/>}/>
         </Route>
       </Routes>
     </AuthProvider>
