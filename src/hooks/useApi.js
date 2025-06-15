@@ -18,6 +18,7 @@ const useApi = (url, options = {}, immediate = true) => {
     const config = {
       url: API_URL + url,
       method: options.method || 'get',
+      withCredentials: options.auth || false,
       ...options,
       ...overrideOptions,
     };
@@ -31,7 +32,7 @@ const useApi = (url, options = {}, immediate = true) => {
         })
         .catch(error => {
           console.error(error);
-          setMsg('요청 실패');
+          setError({code : "E901", message: '요청 결과 처리 실패'});
         })
         .finally(() => {
           setLoading(false);

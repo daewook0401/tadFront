@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header className="w-full shadow-md bg-white z-50 relative">
       {/* 상단 헤더 */}
-      <div className="flex justify-between items-center px-6 py-4">
+      <div className="max-w-screen-xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* 로고 */}
         <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navi("/")}>
           <img src={logo} alt="TADlogo" className="h-14 w-auto" onClick={() => handleMenuClick("/")}/>
@@ -44,13 +44,13 @@ const Header = () => {
           {!auth.isAuthenticated ? (
             <>
               <button
-                className="px-4 py-2 rounded-lg bg-main text-white"
+                className="cursor-pointer px-4 py-2 rounded-lg bg-main text-black"
                 onClick={() => navi("/login")}
               >
                 로그인
               </button>
               <button
-                className="px-4 py-2 rounded-lg bg-sub text-white"
+                className="cursor-pointer px-4 py-2 rounded-lg bg-sub text-black"
                 onClick={() => navi("/signup")}
               >
                 회원가입
@@ -58,23 +58,23 @@ const Header = () => {
             </>
           ) : (
             <>
-              {auth.loginInfo.memberRole === "ROLE_COMMON" ? (
+              {(auth.loginInfo.memberRole === "ROLE_COMMON") ? (
                 <button
-                  className="px-4 py-2 rounded-lg bg-main text-white"
+                  className="cursor-pointer px-4 py-2 rounded-lg bg-main text-black"
                   onClick={() => navi("/mypage")}
                 >
                   마이페이지
                 </button>
               ) : (
                 <button
-                  className="px-4 py-2 rounded-lg bg-main text-white"
+                  className="cursor-pointer px-4 py-2 rounded-lg bg-main text-black"
                   onClick={() => navi("/admin")}
                 >
                   관리자 페이지
                 </button>
               )}
               <button
-                className="px-4 py-2 rounded-lg bg-sub text-white"
+                className="cursor-pointer px-4 py-2 rounded-lg bg-sub text-black"
                 onClick={logout}
               >
                 로그아웃
